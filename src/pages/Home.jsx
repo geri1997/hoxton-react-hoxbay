@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import StoreItem from "../components/StoreItem";
 
 const Home = ({ products }) => {
   return (
@@ -7,17 +8,7 @@ const Home = ({ products }) => {
         <ul className="products-container__list">
           {products.map((product) => {
             return (
-              <li key={product.id}>
-                <a href="/products/1">
-                  <article className="product-item">
-                    <img
-                      src={product.image}
-                      alt={product.description}
-                    />
-                    <h3>{product.title}</h3>
-                  </article>
-                </a>
-              </li>
+              <StoreItem key={product.id} product={product}/>
             );
           })}
         </ul>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Categories from "./pages/Categories";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -10,7 +12,6 @@ function App() {
     fetch("http://localhost:3000/products/")
       .then((resp) => resp.json())
       .then((products) => {
-        console.log(products);
         setProducts(products);
       });
   }, []);
@@ -22,9 +23,9 @@ function App() {
         {
           <Routes>
             <Route path="/" element={<Home products={products} />} />
-            {/* <Route path="/categories" element={<Categories />}/> */}
+            <Route path="/categories" element={<Categories />} />
             {/* <Route path="/basket" element={<Basket />}/> */}
-            {/* <Route path="/" element={<Home />}/> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         }
       </main>
