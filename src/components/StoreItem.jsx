@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const StoreItem = ({product}) => {
   return (
     <>
       <li>
-        <a href="/products/1">
+        <Link to={"/products/" + product.id}>
           <article className="product-item">
             <img src={product.image} alt={product.description} />
             <h3>{product.title}</h3>
           </article>
-        </a>
+        </Link>
       </li>
     </>
   );

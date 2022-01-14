@@ -1,10 +1,14 @@
-const randColour = () =>
+import { Link } from "react-router-dom";
+import NavItem from "./NavItem";
+
+export const randColour = () =>
   ["green", "red", "blue", "yellow"][Math.floor(Math.random() * 4)];
 
 function Header() {
   return (
     <header
       className="header"
+      // @ts-ignore
       style={{ ["--border-colour"]: `var(--${randColour()})` }}
     >
       <div className="header__logo" style={{ color: `var(--${randColour()})` }}>
@@ -12,18 +16,10 @@ function Header() {
       </div>
       <nav className="header__nav">
         <ul>
-          <li>
-            {/* Create here a link to this page */}
-            Home
-          </li>
-          <li>
-            {/* Create here a link to this page */}
-            Categories
-          </li>
-          <li>
-            {/* Create here a link to this page */}
-            Basket
-          </li>
+          <NavItem url={'/products'} title={'Home'}/>
+          <NavItem url={'/categories'} title={'Categories'}/>
+          <NavItem url={'/basket'} title={'Basket'}/>
+          
         </ul>
       </nav>
     </header>

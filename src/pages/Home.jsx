@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import StoreItem from "../components/StoreItem";
 
-const Home = ({ products }) => {
+const Home = ({ products,title }) => {
+
+  document.title=title + ' - Hoxbay'
   return (
     <>
       <section className="products-container main-wrapper">
