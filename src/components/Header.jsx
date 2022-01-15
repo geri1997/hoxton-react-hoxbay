@@ -9,7 +9,7 @@ function Header({ setModal, user, setUser }) {
     <header
       className="header"
       // @ts-ignore
-      style={{ ["--border-colour"]: `var(--${randColour()})` }}
+      style={{ borderColor: `var(--${randColour()})` }}
     >
       <div className="header__logo" style={{ color: `var(--${randColour()})` }}>
         <Link to="/">Hoxbay</Link>

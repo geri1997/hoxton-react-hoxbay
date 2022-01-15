@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import StoreItem from "../components/StoreItem";
 
 const Home = ({ products,title }) => {

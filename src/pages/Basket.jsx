@@ -21,7 +21,7 @@ const Basket = ({ user, setUser, setModal }) => {
         <h2>Your Basket</h2>
         <ul>
           {user.basket.map((item) => (
-            <BasketItem setUser={setUser} key={item.id} item={item} />
+            <BasketItem user={user} setUser={setUser} key={item.id} item={item} />
           ))}
         </ul>
         <h3>

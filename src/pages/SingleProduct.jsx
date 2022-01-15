@@ -24,13 +24,13 @@ const SingleProduct = ({ products, setUser, user, setModal }) => {
         className="product-detail__side"
         style={{ borderColor: "var(--yellow)" }}
       >
-        <h3></h3>
+        <h3 hidden>test</h3>
         <h2>{singleProduct.title}</h2>
         <p>{singleProduct.description}</p>
         <p>£{singleProduct.price}</p>
 
         
-          <button onClick={() => user?addToBasket(singleProduct,setUser):setModal('login')}>
+          <button onClick={() => user?addToBasket(singleProduct,setUser,user):setModal('login')}>
           {user?<Link to="/basket"> Add to basket</Link>:'Add to basket'}
           </button>
         

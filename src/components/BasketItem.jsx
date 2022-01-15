@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasketItem = ({ item, setUser }) => {
+const BasketItem = ({ item, setUser, user }) => {
   return (
     <li>
       <article className="basket-container__item">
@@ -10,15 +10,22 @@ const BasketItem = ({ item, setUser }) => {
           Qty:
           <select
             onChange={(e) => {
-              //change product amount in user basket when changing select value
-              setUser((prevuser) => {
-                let itemIndex = prevuser.basket.findIndex(
-                  (el) => el.id === item.id
-                );
-                let newUser = JSON.parse(JSON.stringify(prevuser));
+              let itemIndex = user.basket.findIndex((el) => el.id === item.id);
+              let newUser = { ...user };
+              if (Number(e.target.value) !== 0) {
                 newUser.basket[itemIndex].amount = Number(e.target.value);
+              } else {
+                  newUser.basket.splice(itemIndex,1)
+              }
 
-                return newUser;
+              //change product amount in user basket when changing select value
+              setUser(newUser);
+              fetch("http://localhost:3000/users/" + user.id, {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newUser),
               });
             }}
             value={item.amount}
