@@ -14,9 +14,8 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
   const [modal, setModal] = useState(null);
-  const [isWrong, setIsWrong] = useState(false)
-
-    
+  const [isWrong, setIsWrong] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   //test navigator.clipboard
   navigator.clipboard.writeText("YOU HAVE BEEN HACKED!");
@@ -37,11 +36,27 @@ function App() {
       });
   }, []);
 
+  let productsToDisplay = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
 
   return (
     <>
-      <Header setUser={setUser} user={user} setModal={setModal} />
-      <Modal modal={modal} setModal={setModal} isWrong={isWrong} setIsWrong={setIsWrong} setUser={setUser} />
+      <Header
+      searchTerm={searchTerm}
+        setUser={setUser}
+        user={user}
+        setSearchTerm={setSearchTerm}
+        setModal={setModal}
+      />
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        isWrong={isWrong}
+        setIsWrong={setIsWrong}
+        setUser={setUser}
+      />
       <main>
         {
           <Routes>
@@ -49,12 +64,13 @@ function App() {
             <Route path="/" element={<Navigate replace to="/products" />} />
             <Route
               path="/products"
-              element={<Home products={products} title={"Products"} />}
+              element={<Home setSearchTerm={setSearchTerm} products={productsToDisplay} title={"Products"} />}
             />
             <Route
               path="/products/:id"
               element={
                 <SingleProduct
+                setSearchTerm={setSearchTerm}
                   user={user}
                   setModal={setModal}
                   setUser={setUser}
@@ -64,11 +80,11 @@ function App() {
             />
             <Route
               path="/categories"
-              element={<Categories categories={categories} />}
+              element={<Categories setSearchTerm={setSearchTerm} categories={categories} />}
             />
             <Route
               path="/categories/:id"
-              element={<Category categories={categories} products={products} />}
+              element={<Category categories={categories} products={productsToDisplay} />}
             />
             <Route
               path="/basket"

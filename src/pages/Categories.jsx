@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { randColour } from "../components/Header";
 
-const Categories = ({categories}) => {
+const Categories = ({categories,setSearchTerm}) => {
 
     document.title='Categories - Hoxbay'
 //   const [categories, setCategories] = useState([]);
@@ -20,6 +20,7 @@ const Categories = ({categories}) => {
           return (
             <li key={category.id}>
               <Link
+              onClick={e=>setSearchTerm('')}
                 style={{ backgroundColor: randColour() }}
                 to={"/categories/" + category.id}
               >

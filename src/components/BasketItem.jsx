@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BasketItem = ({ item, setUser, user }) => {
   return (
     <li>
       <article className="basket-container__item">
-        <img src={item.image} alt={item.title} width="90" />
-        <p>{item.title}</p>
+        <Link to={`/products/${item.id}`}>
+          <img src={item.image} alt={item.title} width="90" />
+        </Link>
+        <Link to={`/products/${item.id}`}>
+          <p>{item.title}</p>
+        </Link>
         <p>
           Qty:
           <select
@@ -15,7 +20,7 @@ const BasketItem = ({ item, setUser, user }) => {
               if (Number(e.target.value) !== 0) {
                 newUser.basket[itemIndex].amount = Number(e.target.value);
               } else {
-                  newUser.basket.splice(itemIndex,1)
+                newUser.basket.splice(itemIndex, 1);
               }
 
               //change product amount in user basket when changing select value

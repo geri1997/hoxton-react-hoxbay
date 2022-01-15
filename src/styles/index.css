@@ -265,3 +265,19 @@ img {
 li#asd {
   width: 200px;
 }
+button.add-to-cart{
+  margin: 0;
+  justify-self: end;
+  max-width: 100%;
+}
+.product-detail__side a[href='/basket']{
+  margin: 2rem;
+  justify-self: end;
+  display: grid;
+  
+}
+
+input.search{
+  height: 2rem;
+  font-size: 1.5rem;
+}

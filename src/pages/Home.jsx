@@ -1,7 +1,7 @@
 import React from "react";
 import StoreItem from "../components/StoreItem";
 
-const Home = ({ products,title }) => {
+const Home = ({ products,title, setSearchTerm }) => {
 
   document.title=title + ' - Hoxbay'
   return (
@@ -10,7 +10,7 @@ const Home = ({ products,title }) => {
         <ul className="products-container__list">
           {products.map((product) => {
             return (
-              <StoreItem key={product.id} product={product}/>
+              <StoreItem setSearchTerm={setSearchTerm} key={product.id} product={product}/>
             );
           })}
         </ul>

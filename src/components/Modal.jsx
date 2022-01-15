@@ -31,6 +31,8 @@ export default function Modal({
             .then((resp) => resp.json())
             .then((user) => setUser((prevUser) => (prevUser = user)));
           setModal((prevModal) => (prevModal = ""));
+        }else{
+          setIsWrong(true)
         }
       });
   }
