@@ -19,6 +19,7 @@ function App() {
 
   //test navigator.clipboard
   navigator.clipboard.writeText("YOU HAVE BEEN HACKED!");
+  
 
   useEffect(() => {
     fetch("http://localhost:3000/products/")
@@ -35,6 +36,7 @@ function App() {
         setCategories((previousCat) => (previousCat = cat));
       });
   }, []);
+  
 
   let productsToDisplay = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
