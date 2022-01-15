@@ -10,14 +10,16 @@ const Category = ({ products,categories }) => {
   let productsToDisplay = products.filter((product) => {
    return  product.categoryId === Number(params.id);
   });
-
-  document.title = categories.find(cat=>cat.id===Number(params.id)).name + ' - Hoxbay'
+  
+  //Ask Nico
+  document.title = categories.find(cat=>cat?.id===Number(params.id))?.name + ' - Hoxbay'
+  
 
   return (
     <section className="products-container main-wrapper">
       <ul className="products-container__list">
         {productsToDisplay.map((product) => (
-          <StoreItem key={product.id} product={product} />
+          <StoreItem key={product.id}  product={product} />
         ))}
       </ul>
     </section>
