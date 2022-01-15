@@ -12,9 +12,13 @@ const SingleProduct = ({ products, setUser, user, setModal }) => {
 
   //Change page title
   //Ask Nico
-  document.title = singleProduct.title + " - Hoxbay"
+  if(singleProduct) document.title = singleProduct.title + " - Hoxbay"
 
-  //if users basket contains the product, increase the amount, else, add the product to basket
+  if(!singleProduct){
+    document.title = "Product not Found - Hoxbay"
+    return <h2 style={{textAlign:'center'}}>Product not Found</h2>
+  }
+
   
 
   return (
