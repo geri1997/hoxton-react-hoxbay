@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import StoreItem from "../components/StoreItem";
 
-const Category = ({ products,categories }) => {
+const Category = ({ products,categories, setSearchTerm }) => {
   const params = useParams();
   
  
@@ -19,7 +19,7 @@ const Category = ({ products,categories }) => {
     <section className="products-container main-wrapper">
       <ul className="products-container__list">
         {productsToDisplay.map((product) => (
-          <StoreItem key={product.id}  product={product} />
+          <StoreItem setSearchTerm={setSearchTerm} key={product.id}  product={product} />
         ))}
       </ul>
     </section>

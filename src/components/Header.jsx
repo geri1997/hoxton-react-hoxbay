@@ -33,7 +33,7 @@ function Header({ setModal, user, setUser, setSearchTerm, searchTerm }) {
           />
           {!user && (
             <>
-              <li
+              <li style={{cursor:'pointer'}}
                 onClick={() => {
                   setModal("login");
                   setSearchTerm("");
@@ -41,7 +41,7 @@ function Header({ setModal, user, setUser, setSearchTerm, searchTerm }) {
               >
                 Sign In
               </li>
-              <li
+              <li style={{cursor:'pointer'}}
                 onClick={() => {
                   setModal("sign up");
                   setSearchTerm("");
@@ -53,7 +53,7 @@ function Header({ setModal, user, setUser, setSearchTerm, searchTerm }) {
           )}
           {user && (
             <>
-              <li
+              <li style={{cursor:'pointer'}}
                 onClick={() => {
                   setModal(null);
                   setUser(null);

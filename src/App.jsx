@@ -16,9 +16,15 @@ function App() {
   const [modal, setModal] = useState(null);
   const [isWrong, setIsWrong] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  // const [url, setUrl] = useState(document.URL)
 
   //test navigator.clipboard
   navigator.clipboard.writeText("YOU HAVE BEEN HACKED!");
+
+  // useEffect(() => {
+  //   console.log('newUrl')
+   
+  // }, [document.URL])
   
 
   useEffect(() => {
@@ -65,6 +71,7 @@ function App() {
             {" "}
             <Route path="/" element={<Navigate replace to="/products" />} />
             <Route
+           
               path="/products"
               element={<Home setSearchTerm={setSearchTerm} products={productsToDisplay} title={"Products"} />}
             />
@@ -86,7 +93,7 @@ function App() {
             />
             <Route
               path="/categories/:id"
-              element={<Category categories={categories} products={productsToDisplay} />}
+              element={<Category setSearchTerm={setSearchTerm} categories={categories} products={productsToDisplay} />}
             />
             <Route
               path="/basket"
